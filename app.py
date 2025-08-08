@@ -3,33 +3,32 @@ import pandas as pd
 import joblib
 import time
 
-# Muat model dan preprocessor yang telah disimpan
-# Pastikan file model.pkl dan preprocessor.pkl ada di folder yang sama
+# --- 1. Muat Model dan Preprocessor ---
+# Menggunakan path relatif agar bisa berjalan saat di-deploy
 try:
-    model = joblib.load('C:/Users/Ade Ahmad Faizal/OneDrive - Universitas Islam Indonesia/Documents/Semester 4/MPML/UAS/model.pkl')
-    preprocessor = joblib.load('C:/Users/Ade Ahmad Faizal/OneDrive - Universitas Islam Indonesia/Documents/Semester 4/MPML/UAS/preprocessor.pkl')
+    model = joblib.load('model.pkl')
+    preprocessor = joblib.load('preprocessor.pkl')
 except FileNotFoundError:
-    st.error("File model atau preprocessor tidak ditemukan. Pastikan 'model.pkl' dan 'preprocessor.pkl' ada di direktori yang sama.")
+    st.error("File 'model.pkl' atau 'preprocessor.pkl' tidak ditemukan.")
     st.stop()
 
-# --- Konfigurasi Halaman Web ---
+# --- 2. Konfigurasi Halaman dan Gaya Kustom (CSS) ---
 st.set_page_config(
     page_title="Prediksi Harga Sepatu",
     page_icon="👟",
     layout="wide"
 )
 
-# --- Gaya Kustom (CSS) untuk Tampilan yang Lebih Menarik ---
+# Menambahkan gaya CSS untuk tampilan yang modern dan elegan
 st.markdown("""
 <style>
-    /* Latar belakang dengan gradien */
+    /* Latar belakang dengan gradien yang lembut */
     .stApp {
-        background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        background-image: linear-gradient(to right top, #6d327c, #485DA6, #008793, #00BF72, #A8EB12);
     }
     
     /* Gaya untuk judul utama */
-    .stTitle {
-        font-weight: bold;
+    h1 {
         color: #FFFFFF;
         text-shadow: 2px 2px 4px #000000;
     }
@@ -41,7 +40,7 @@ st.markdown("""
         border-radius: 10px;
     }
 
-    /* Gaya untuk tombol */
+    /* Gaya untuk tombol prediksi */
     .stButton>button {
         color: #ffffff;
         background-color: #007BFF;
@@ -58,7 +57,7 @@ st.markdown("""
         box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
 
-    /* Gaya untuk hasil prediksi */
+    /* Gaya untuk kartu hasil prediksi */
     .stMetric {
         background-color: #FFFFFF;
         border-left: 5px solid #007BFF;
@@ -69,11 +68,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
-# --- Sidebar untuk Input Pengguna ---
+# --- 3. Sidebar untuk Input Pengguna ---
 st.sidebar.header("Masukkan Detail Sepatu")
 
-# Opsi untuk Dropdown
 brand_options = [
     'ASIAN', 'Adidas', 'BATA', 'BUROJ', 'Bourge', 'Campus', 'Centrino', 
     'Corstyle', 'D Shoes', 'FEETEES', 'FURO', 'Generic', 'Kraasa', 'Nivia', 
@@ -84,6 +81,7 @@ category_options = [
     'Casual', 'Other', 'Running', 'Sneakers', 'Sports', 'Training & Gym', 'Walking'
 ]
 
+# Form input di dalam sidebar
 with st.sidebar.form("prediction_form"):
     brand = st.selectbox("🏷️ Merek Sepatu", options=brand_options)
     category = st.selectbox("👟 Kategori Fungsional", options=category_options)
@@ -91,41 +89,36 @@ with st.sidebar.form("prediction_form"):
     
     submit_button = st.form_submit_button(label="Prediksi Harga")
 
-# --- Halaman Utama ---
+# --- 4. Halaman Utama ---
 st.title("Aplikasi Prediksi Harga Sepatu")
 st.markdown("Selamat datang! Aplikasi ini menggunakan model *Machine Learning* untuk memberikan estimasi harga sepatu berdasarkan fitur yang Anda pilih di sidebar.")
 
-# --- Logika untuk Menampilkan Prediksi ---
+# --- 5. Logika untuk Menampilkan Prediksi ---
 if submit_button:
-    # Buat DataFrame dari input pengguna
+    # Buat DataFrame dari input
     input_data = pd.DataFrame({
         'Brand_Name': [brand],
         'RATING': [rating],
         'Category': [category]
     })
 
-    # Tampilkan animasi loading
+    # Tampilkan animasi loading saat prediksi berjalan
     with st.spinner('Sedang menghitung prediksi...'):
-        time.sleep(1) # Simulasi proses
-        try:
-            # Proses data input
-            processed_data = preprocessor.transform(input_data)
-            
-            # Lakukan prediksi
-            prediction = model.predict(processed_data)
-            
-            # Tampilkan hasil dalam kolom
-            col1, col2 = st.columns([1,2])
-            with col1:
-                st.metric(
-                    label="Prediksi Harga",
-                    value=f"Rp {prediction[0]:,.0f}"
-                )
-            with col2:
-                st.info(f"Estimasi harga untuk sepatu **{brand}** dengan kategori **{category}** dan rating **{rating}**.")
-
-        except Exception as e:
-            st.error(f"Terjadi kesalahan saat melakukan prediksi: {e}")
+        time.sleep(1) # Simulasi proses agar loading terlihat
+        
+        # Proses data dan lakukan prediksi
+        processed_data = preprocessor.transform(input_data)
+        prediction = model.predict(processed_data)
+        
+        # Tampilkan hasil prediksi dalam layout kolom
+        col1, col2 = st.columns([1, 2])
+        with col1:
+            st.metric(
+                label="Prediksi Harga",
+                value=f"Rp {prediction[0]:,.0f}"
+            )
+        with col2:
+            st.info(f"Estimasi harga untuk sepatu **{brand}** dengan kategori **{category}** dan rating **{rating}**.")
 
 st.markdown("---")
 st.write("Dibuat oleh **Ade Ahmad Faizal** untuk Proyek UAS MPML.")
