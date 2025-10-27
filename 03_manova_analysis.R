@@ -426,7 +426,7 @@ cat("   - Discriminant Analysis: Klasifikasi spesies\n")
 cat("   - Profile Analysis: Pola perbedaan antar variabel\n")
 cat("   - MANCOVA: Jika ada kovariat kontinu\n\n")
 
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 # ============================================================================
 # CATATAN PENTING

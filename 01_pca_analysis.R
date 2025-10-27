@@ -318,7 +318,7 @@ cat("4. APLIKASI:\n")
 cat("   - Gunakan PC scores untuk klasifikasi, clustering, atau regresi\n")
 cat("   - Visualisasi data dalam ruang 2D/3D lebih mudah\n\n")
 
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 # ============================================================================
 # CATATAN PENTING & PERINGATAN

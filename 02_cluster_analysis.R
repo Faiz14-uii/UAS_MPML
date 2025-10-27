@@ -457,7 +457,7 @@ cat("   - Average Silhouette Width:", round(mean(sil[, 3]), 3), "\n")
 cat("   - Dunn Index:", round(dunn_idx, 4), "\n")
 cat("   - Agreement (ARI):", round(ari, 3), "\n\n")
 
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 cat("\n⚠️  CATATAN PENTING:\n\n")
 cat("1. STANDARDISASI wajib jika variabel beda skala\n")
