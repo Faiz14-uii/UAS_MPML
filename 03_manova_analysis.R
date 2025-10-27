@@ -232,9 +232,9 @@ corrplot(cor_matrix_all, method = "color", type = "upper",
 # LANGKAH 6: MENJALANKAN MANOVA
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("MENJALANKAN MANOVA\n")
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 # Hipotesis:
 # H0: Tidak ada perbedaan rata-rata multivariat antar spesies
@@ -390,9 +390,9 @@ plotmeans(Petal.Length ~ Species, data = df,
 # RINGKASAN
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("RINGKASAN MANOVA\n")
-cat(rep("=", 70) + "\n\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
 
 cat("1. DESAIN PENELITIAN:\n")
 cat("   - Variabel Independen: Species (3 level)\n")

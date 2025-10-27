@@ -422,9 +422,9 @@ cat("  - Outliers (multivariat):", n_outliers_multivar, "\n")
 # CHECKLIST PREPROCESSING
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("CHECKLIST PREPROCESSING SEBELUM ANALISIS MULTIVARIAT\n")
-cat(rep("=", 70) + "\n\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
 
 cat("□ 1. Import dan inspeksi data\n")
 cat("□ 2. Periksa tipe variabel (numerik, kategorikal)\n")
@@ -437,7 +437,7 @@ cat("□ 8. Standardisasi untuk metode distance-based\n")
 cat("□ 9. Analisis korelasi dan multikolinearitas\n")
 cat("□ 10. Export data bersih untuk analisis\n\n")
 
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 cat("\n💡 TIPS PENTING:\n\n")
 cat("1. DOKUMENTASI: Catat semua keputusan preprocessing\n")

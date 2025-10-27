@@ -297,9 +297,9 @@ print(head(df_with_pc))
 # RINGKASAN DAN TIPS
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("RINGKASAN ANALISIS PCA\n")
-cat(rep("=", 70) + "\n\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
 
 cat("1. REDUKSI DIMENSI:\n")
 cat("   - Dari", ncol(df_numeric), "variabel menjadi", n_components_kaiser, 

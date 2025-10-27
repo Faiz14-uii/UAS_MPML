@@ -94,9 +94,9 @@ print(as.matrix(dist_matrix)[1:5, 1:5])
 # METODE 1: HIERARCHICAL CLUSTERING
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("METODE 1: HIERARCHICAL CLUSTERING\n")
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 # Linkage methods:
 # - "complete": Maximum distance (konservatif, cluster compact)
@@ -205,9 +205,9 @@ for (i in 1:optimal_k) {
 # METODE 2: K-MEANS CLUSTERING
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("METODE 2: K-MEANS CLUSTERING\n")
-cat(rep("=", 70) + "\n")
+cat(paste(rep("=", 70), collapse = ""), "\n")
 
 # K-means dengan k = 4
 # nstart = 25: Coba 25 konfigurasi awal, pilih yang terbaik
@@ -431,9 +431,9 @@ print(head(result_df))
 # RINGKASAN
 # ============================================================================
 
-cat("\n" + rep("=", 70) + "\n")
+cat("\n", paste(rep("=", 70), collapse = ""), "\n")
 cat("RINGKASAN ANALISIS CLUSTER\n")
-cat(rep("=", 70) + "\n\n")
+cat(paste(rep("=", 70), collapse = ""), "\n\n")
 
 cat("1. DATA:\n")
 cat("   -", nrow(df), "observasi (negara bagian AS)\n")
