@@ -1,5 +1,78 @@
-pandas
-scikit-learn
-numpy
-streamlit
-joblib
+# R Packages untuk Analisis Statistika Multivariat Terapan
+# Install semua dengan: install.packages(c("tidyverse", "FactoMineR", ...))
+
+# === CORE PACKAGES ===
+tidyverse       # Data manipulation (dplyr, ggplot2, tidyr, dll)
+data.table      # Fast data manipulation (opsional, untuk big data)
+
+# === ANALISIS MULTIVARIAT ===
+FactoMineR      # PCA, MCA, FAMD, dan metode multivariat lainnya
+factoextra      # Visualisasi hasil FactoMineR
+psych           # Analisis faktor, reliabilitas, deskriptif
+car             # Companion to Applied Regression, MANOVA
+MASS            # Modern Applied Statistics with S
+
+# === CLUSTERING ===
+cluster         # Hierarchical, K-means, PAM
+NbClust         # Menentukan jumlah cluster optimal
+dendextend      # Enhanced dendrogram
+fpc             # Flexible procedures for clustering
+
+# === VISUALISASI ===
+corrplot        # Correlation matrix visualization
+GGally          # Extension ggplot2 (scatterplot matrix)
+plotly          # Interactive plots
+heatmaply       # Interactive heatmap
+ggrepel         # Avoid overlapping text labels
+RColorBrewer    # Color palettes
+
+# === MISSING DATA ===
+mice            # Multiple Imputation by Chained Equations
+VIM             # Visualization and Imputation of Missing values
+Amelia          # Amelia II untuk missing data
+missForest      # Random forest imputation
+
+# === ASUMSI & DIAGNOSTIK ===
+MVN             # Multivariate normality tests
+mvnormtest      # Shapiro-Wilk multivariate normality test
+biotools        # Box's M test untuk homogenitas kovarians
+outliers        # Outlier detection tests
+mvoutlier       # Multivariate outlier detection
+
+# === MANOVA & KONFIRMATORI ===
+heplots         # Hypothesis-error plots untuk MANOVA
+candisc         # Canonical discriminant analysis
+MANOVA.RM       # MANOVA untuk repeated measures
+
+# === REGRESSION MULTIVARIAT ===
+mvr             # Multivariate regression (dalam pls package)
+pls             # Partial Least Squares regression
+
+# === SEM & PATH ANALYSIS ===
+lavaan          # Structural Equation Modeling
+semPlot         # Visualisasi SEM
+semTools        # Tools untuk SEM
+
+# === DISCRIMINANT ANALYSIS ===
+klaR            # Classification and visualization
+MASS            # LDA, QDA (sudah di-list, tapi penting)
+
+# === TIME SERIES MULTIVARIAT ===
+vars            # Vector Autoregression
+
+# === UTILITIES ===
+moments         # Skewness, kurtosis
+e1071           # Statistical learning (SVM, dll)
+caret           # Classification And REgression Training
+scales          # Scale functions untuk ggplot2
+gridExtra       # Arrange multiple grid-based plots
+
+# === DOKUMENTASI & REPRODUCIBILITY ===
+knitr           # Dynamic report generation
+rmarkdown       # R Markdown
+officer         # Manipulate Word/PowerPoint
+flextable       # Tables untuk report
+
+# === PERFORMANCE ===
+parallel        # Parallel computation
+doParallel      # Parallel backend untuk foreach
